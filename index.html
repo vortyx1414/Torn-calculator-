@@ -1,0 +1,51 @@
+<!doctype html><html><head></head><body><!DOCTYPE html>
+<html>
+<head>
+  <title>Torn Item Flipper</title>
+    <style>
+        body { font-family: Arial; padding: 20px; background: #121212; color: #fff; text-align: center; }
+            input { padding: 10px; margin: 10px; width: 200px; font-size: 16px; }
+                button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+                    .result { margin-top: 20px; font-size: 18px; }
+                      </style>
+                      </head>
+                      <body>
+                        <h1>🧪 Torn Item Profit Calculator 💸</h1>
+
+                          <input type="number" id="buyPrice" placeholder="Buy Price per item">
+                            <input type="number" id="sellPrice" placeholder="Sell Price per item">
+                              <input type="number" id="quantity" placeholder="Quantity" value="10">
+                                <br>
+                                  <button onclick="calculate()">Calculate Profit</button>
+
+                                    <div class="result" id="result"></div>
+
+                                      <script>
+                                          function calculate() {
+                                                let buy = parseFloat(document.getElementById("buyPrice").value);
+                                                      let sell = parseFloat(document.getElementById("sellPrice").value);
+                                                            let qty = parseInt(document.getElementById("quantity").value);
+
+                                                                  if (isNaN(buy) || isNaN(sell) || isNaN(qty)) {
+                                                                          document.getElementById("result").innerHTML = "💀 Enter valid numbers!";
+                                                                                  return;
+                                                                                        }
+
+                                                                                              let totalSell = sell * qty;
+                                                                                                    let fee = totalSell * 0.05;
+                                                                                                          let net = totalSell - fee;
+                                                                                                                let totalBuy = buy * qty;
+                                                                                                                      let profit = net - totalBuy;
+
+                                                                                                                            let emoji = profit > 0 ? "🤑" : profit < 0 ? "😩" : "😐";
+                                                                                                                                  document.getElementById("result").innerHTML = `
+                                                                                                                                          📦 Total Buy: $${totalBuy.toLocaleString()}<br>
+                                                                                                                                                  💰 Total Sell: $${totalSell.toLocaleString()}<br>
+                                                                                                                                                          🧾 Fee (5%): $${fee.toLocaleString()}<br>
+                                                                                                                                                                  ✅ Net After Fee: $${net.toLocaleString()}<br>
+                                                                                                                                                                          <strong>${emoji} Profit: $${profit.toLocaleString()}</strong>
+                                                                                                                                                                                `;
+                                                                                                                                                                                    }
+                                                                                                                                                                                      </script>
+                                                                                                                                                                                      </body>
+                                                                                                                                                                                      </html></body><html>
